@@ -14,14 +14,20 @@ use Midtrans\Notification;
 class DonationController extends Controller
 {
     public function __construct()
-{
-    \Midtrans\Config::$serverKey = config('services.midtrans.serverKey');
-    \Midtrans\Config::$isProduction = config('services.midtrans.isProduction');
-    \Midtrans\Config::$isSanitized = config('services.midtrans.isSanitized');
-    \Midtrans\Config::$is3ds = config('services.midtrans.is3ds');
-}
+    {
+        \Midtrans\Config::$serverKey = config('services.midtrans.serverKey');
+        \Midtrans\Config::$isProduction = config('services.midtrans.isProduction');
+        \Midtrans\Config::$isSanitized = config('services.midtrans.isSanitized');
+        \Midtrans\Config::$is3ds = config('services.midtrans.is3ds');
+    }
 
     public function index()
+    {
+        $donations = Donation::orderBy('id', 'DESC')->paginate(8);
+        return view('welcome', compact('donations'));
+    }
+
+    public function create()
     {
         return view('donation');
     }

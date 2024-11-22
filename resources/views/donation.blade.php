@@ -98,13 +98,13 @@
     </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js">
     </script>
-    <script src="https:app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('services.midtrans.clientKey') }}">
+    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('services.midtrans.clientKey') }}">
     </script>
     <script>
         $("#donation_form").submit(function(event) {
             event.preventDefault();
 
-            $.post("/api//donation", {
+            $.post("/api/donation", {
                 _method: 'POST',
                 _token: '{{ csrf_token() }}',
                 donor_name: $('input#donor_name').val(),

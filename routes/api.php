@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DonationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,4 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/donation', [DonationController::class, 'store']);
-Route::post('/midtrans/notification', 'DonationController@notification');
+Route::post('/midtrans/notification', [DonationController::class, 'notification']);
